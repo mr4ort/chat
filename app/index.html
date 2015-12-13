@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="ru"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Angular App</title>
+  <!--
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  -->
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body ng-app="chatApp" ng-controller="chat">
+
+<header>
+  <div class="container">
+
+    <div class="about">
+      <img class="photo" src="img/manager.jpg" alt="alt"/>
+      <div class="name p-left">Вероника Ростова</div>
+      <div class="position p-left">Менеджер по продажам</div>
+      <div class="descr p-left">Подберу для вас самые лучшие предложения.
+        Мои услуги абсолютно бесплатны</div>
+    </div>
+
+    <div class="service">
+      <div class="header-sect">
+        <div class="row">
+          <div class="cols col-9"></div>
+          <div class="cols col-3"><strong>Услуг</strong></div>
+        </div>
+      </div>
+      <div class="body-sect">
+        <div class="row"  ng-repeat="x in services">
+          <div class="cols col-9">
+            <div class="progress">
+              <span class="sr-only">{{(x.skill)}}</span>
+              <div class="progress-bar"  ng-style="progressVal($index)"></div>
+            </div>
+          </div>
+          <div class="cols col-3">
+            <strong>{{x.count}}</strong>
+          </div>
+        </div>
+      </div>
+      <div class="foot-sect">
+        <div class="row">
+          <div class="cols col-9"><span class="">Всего</span></div>
+          <div class="cols col-3"><strong>{{total}}</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="s-opinions">
+  <div class="container">
+    <div class="top-panel">
+      <div class="left-side">
+        <strong>Последние отзывы</strong>
+        <a href="#">Все отзывы</a>
+      </div>
+      <div class="right-side">
+        <div class="icons">
+          <div class="icon">
+            <i class="fa fa-heart"></i>
+            <span>{{like}}</span>
+          </div>
+          <div class="icon" >
+            <i class="fa fa-commenting"></i>
+            <span>{{messages.length}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="opinions-wrapper">
+      <div class="opinion-item" ng-repeat="mes in messages">
+        <div class="name"><strong>{{mes.name}}</strong></div>
+        <div class="time">{{showDate($index)}}</div>
+        <blockquote class="message">{{mes.message}}</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="inputs">
+  <div class="container">
+    <textarea  ng-model="newMessage" autofocus></textarea>
+    <a href="" class="btn" ng-click="addMessage()">Написать консультанту</a>
+  </div>
+</section>
+
+
+<!-- Angular.js core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="bower_components/angular/angular.js"></script>
+<!--Angular.js Route-->
+<script src="bower_components/angular-route/angular-route.js"></script>
+<!--Angular.js Resource-->
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+
+<script src="js/controllers.js"></script>
+
+</body>
+</html>
