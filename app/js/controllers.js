@@ -9,6 +9,7 @@ app.controller('chat', ['$scope','$http', function($scope, $http) {
       function (responce) {
 
         //$scope.services = responce.data.services;
+        //
 
         //$scope.messages = responce.data.messages;
       }
