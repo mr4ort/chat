@@ -1,35 +1,21 @@
 'use strict';
 
 /* Controllers */
-var app = angular.module('chatApp', ['ngRoute', 'ngResource']);
 
-app.controller('chat', ['$scope','$http', function($scope, $http) {
+var app = angular.module('chatApp', []);
 
-  $http({method: "get", url: "data.json"}).then(
-      function (responce) {
-
-        //$scope.services = responce.data.services;
-        //
-
-        //$scope.messages = responce.data.messages;
-      }
-  );
-
-
-
+app.controller('chat', ['$scope', function($scope) {
   $scope.services = [
     {"skill": "Ручное бронирование",
-    "count": 11,
-    "color": "#3cb305"},
+      "count": 11,
+      "color": "#3cb305"},
     {"skill": "Пакетные туры",
       "count": 3,
-     "color": "#30b6ee"},
+      "color": "#30b6ee"},
     {"skill": "Отели",
       "count": 1,
       "color": "#30b6ee"}
   ];
-
-
 
   $scope.messages = [
     {
@@ -48,7 +34,6 @@ app.controller('chat', ['$scope','$http', function($scope, $http) {
       "message" : "Вероника, здравствуйте! Есть такой вопрос: Особый вид куниц жизненно стабилизирует кинетический момент?"
     }
   ];
-
 
   $scope.monthNames = ["Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря"];
 
@@ -82,9 +67,8 @@ app.controller('chat', ['$scope','$http', function($scope, $http) {
   //$scope.total = $scope.services.reduce(function(a,b){return a.count + b.count});
 
   $scope.total = 0;
-
-  $scope.services.forEach(function(el){$scope.total += el.count;});
-  console.log($scope.total);
+  $scope.services.map(function(el){$scope.total += el.count;});
+  console.log($scope.tota);
 
   //$scope.total = $scope.arr.reduce(function(x,y){return x + y;});
 
